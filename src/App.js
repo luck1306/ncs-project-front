@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Main from './components/page/MainPage';
+import NotFound from './components/page/NotFound';
+import LoginPage from './components/page/LoginPage';
+import SignUpPage from './components/page/SignUpPage';
+import Header from './components/page/Header';
+import MyPage from './components/page/MyPage/MyPage';
+import ProblemPage from './components/page/ProblemPage';
+import LogoutPage from './components/page/LogoutPage';
+import PostProblemPage from './components/page/PostProblemPage';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header></Header>
+      <Routes>
+        <Route path='/' element={<Main></Main>}></Route>
+        <Route path='/login' element={<LoginPage></LoginPage>}></Route>
+        <Route path='/sign-up' element={<SignUpPage></SignUpPage>}></Route>
+        <Route path='/my-page' element={<MyPage></MyPage>}></Route>
+        <Route path='/problem' element={<ProblemPage></ProblemPage>}></Route>
+        <Route path='/logout' element={<LogoutPage></LogoutPage>}></Route>
+        <Route path='/post/problem' element={<PostProblemPage></PostProblemPage>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
